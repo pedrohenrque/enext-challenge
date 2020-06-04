@@ -153,7 +153,7 @@ export const CustomDog = styled.div`
 
   div {
     background: #fff;
-    max-width: 270px;
+    max-width: 300px;
     text-align: center;
 
     h1 {
@@ -162,9 +162,43 @@ export const CustomDog = styled.div`
     }
 
     img {
-      width: 250px;
-      height: 300px;
+      padding: 10px;
+      width: 300px;
+      height: 350px;
       object-fit: cover;
     }
   }
+`;
+
+export const Modal = styled.div`
+  display: flex;
+  width: 170px;
+  height: 50px;
+  top: 20px;
+  right: 30px;
+  position: absolute;
+  background: #6272a4;
+  align-items: center;
+  text-align: center;
+  border-radius: 4px;
+  opacity: 0;
+  transition: 0.4s;
+
+  button {
+    border: none;
+    background: none;
+    color: #ff79c6;
+    margin: 0 10px;
+  }
+
+  ${(props) =>
+    props.hasOpen &&
+    css`
+      opacity: 1;
+    `}
+`;
+
+export const TextModal = styled.h3`
+  color: #8be9fd;
+  font-weight: 400;
 `;

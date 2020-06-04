@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 
-import logo from '../../assets/enext.png';
-import coragem from '../../assets/coragem.png';
+import moment from 'moment';
 
+import logo from '../../assets/enext.png';
 import {
   Container,
   Title,
@@ -13,6 +13,8 @@ import {
   ColorView,
   CustomDog,
   Breeds,
+  Modal,
+  TextModal,
 } from './styles';
 
 const Dashboard = () => {
@@ -34,22 +36,33 @@ const Dashboard = () => {
       border: '#fff',
     },
   };
-
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [colorName, setColorName] = useState('');
   const [dogList, setDogList] = useState();
   const [fontName, setFontName] = useState('Inter');
   const [dogName, setDogName] = useState('');
   const [breed, setBreed] = useState('affenpinscher');
   const [dogImage, setDogImage] = useState('');
+  const [customDog, setCustomDog] = useState(() => {
+    const storageDog = localStorage.getItem('@Enext:customDog');
+    console.log('storage', storageDog);
 
-  const [customDog, setCustomDog] = useState({ name: '', font: '', color: '' });
+    if (storageDog) {
+      setLoading(true);
+      return JSON.parse(storageDog);
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('@Enext:customDog', JSON.stringify(customDog));
+  }, [customDog]);
 
   useEffect(() => {
     const fetchList = async () => {
       const { data } = await api.get(`/breeds/list/all`);
       const filterDogs = Object.keys(data.message);
-      console.log(filterDogs);
-
       setDogList(filterDogs);
     };
     fetchList();
@@ -59,21 +72,40 @@ const Dashboard = () => {
     event.preventDefault();
 
     const { data } = await api.get(`breed/${breed}/images/random`);
-    setDogImage(data);
+    setDogImage(data.message);
+    setCustomDog({ name: '', image: data.message });
+    setLoading(true);
+    console.log(customDog);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
+    const date = moment().format('L, h:mm:ss a');
+    setCustomDog({
+      name: dogName,
+      font: fontName,
+      color: colorName.name,
+      image: customDog.image,
+      date: date,
+    });
+    setDogName('');
+    setOpen(true);
+    setTimeout(() => setOpen(false), 5000);
 
-    setCustomDog({ name: dogName, font: fontName, color: colorName.name });
+    console.log(customDog);
   }
+
+  function openModal() {
+    setOpen(false);
+    console.log('modal', open);
+  }
+
   return (
     <>
       <Title>
         <img src={logo} alt="Logo" />
         <h1>Search Dogs</h1>
       </Title>
-
       <Container>
         {dogList && (
           <Breeds>
@@ -146,7 +178,7 @@ const Dashboard = () => {
           </div>
           <button type="submit">Salvar</button>
         </SearchForms>
-        {dogImage && (
+        {customDog.image && (
           <CustomDog>
             <div>
               <h1
@@ -157,12 +189,17 @@ const Dashboard = () => {
               >
                 {customDog.name}
               </h1>
-
-              <img src={dogImage.message} alt="Doguinho" />
+              <img src={customDog.image} alt="Doguinho" />
             </div>
           </CustomDog>
         )}
       </Container>
+      <Modal hasOpen={open}>
+        <TextModal>Salvo com sucesso!</TextModal>
+        <button type="button" onClick={openModal}>
+          X
+        </button>
+      </Modal>
     </>
   );
 };

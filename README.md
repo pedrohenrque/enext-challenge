@@ -1,68 +1,72 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+    <img alt="Desafio conceitos nodeJS" src="https://user-images.githubusercontent.com/54694186/83710980-6862cf80-a5f8-11ea-9172-0d24641b05b9.png" />
+    <br>
+  Desafio técnico web - enext
+</h1>
 
-## Available Scripts
+## Objetivo
 
-In the project directory, you can run:
+Buscar em uma API pública todas as raças de cachorros.
 
-### `yarn start`
+O usuário poderá digitar o nome do cachorro, estilizar a fonte e a cor e essa informação deverá ser armazenada no local storage.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Documentação Dog API: [Dog API](https://dog.ceo/dog-api/).
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Na tela deve conter
 
-### `yarn test`
+- Select com as raças;
+- Input para usuário inserir o nome do cachorro;
+- Select para selecionar a cor da fonte (Disponibilizar até 5 Cores);
+- Select com as opções de font, utilizar Google Fonts (Disponibilizar até 5 Fontes);
+- Imagem do cachorro selecionado com o texto por cima com a fonte e cor selecionada;
+- Botão salvar para armazenar em local storage(funcionalidade HTML5) as informações selecionadas pelo usuário + Data e Horário.
+- Após ação de salvar deve ter uma mensagem de sucesso na tela.
+- Caso a página seja recarregada as informações salvas pelo usuário deverão permanecer na tela.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Layout
 
-### `yarn build`
+O layout você tem total liberdade para organizar seus componentes na tela da forma fizer sentido para você.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tecnologias
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Este projeto foi desenvolvido com as seguintes tecnologias:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [styled-components]
+- [ReactJS]
+- [Axios]
+- [Yarn]
+- [VS Code][vc]
 
-### `yarn eject`
+## Como usar
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Para utilizar esta aplicação, você precisa do [Git](https://git-scm.com), [Node.js v12.13][nodejs] ou superior + [Yarn v1.13][yarn] ou superior instalado no seu computador. Na sua linha de comando:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# Clone este repositório
+$ git clone https://github.com/pedrohenrque/enext-challenge.git
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Entre no repositório
+$ cd enext-challenge
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Instale as dependências
+$ yarn ou yarn install
 
-## Learn More
+# Rode a aplicação
+$ yarn start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
-### Code Splitting
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Powernerd by Pedro Henrique - [Follow me on linkedin!](https://www.linkedin.com/in/pedrohenrque/)
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[nodejs]: https://nodejs.org/
+[styled-components]: https://styled-components.com/
+[reactjs]: https://pt-br.reactjs.org/
+[react native]: https://reactnative.dev/
+[axios]: https://github.com/axios/axios
+[yarn]: https://yarnpkg.com/
+[vc]: https://code.visualstudio.com/
+[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+[vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
